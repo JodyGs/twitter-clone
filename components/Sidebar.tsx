@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { SVGProps } from 'react'
 import {
   BellIcon,
   HashtagIcon,
@@ -11,8 +11,12 @@ import {
 } from '@heroicons/react/outline'
 import twitterLogo from '../public/assets/logo-twitter.png'
 import SidebarRow from './SidebarRow'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 function Sidebar() {
+
+  const {data: session} = useSession()
+
   return (
   <div className='col-span-2 flex flex-col items-center px-4 md:items-start '>
     <img className='h-10 w-10 m-3' src='/assets/logo-twitter.png' alt="twitter logo" />
@@ -22,7 +26,7 @@ function Sidebar() {
     <SidebarRow Icon={MailIcon} title="Messages" />
     <SidebarRow Icon={BookmarkIcon} title="Bookmarks" />
     <SidebarRow Icon={CollectionIcon} title="Lists" />
-    <SidebarRow Icon={UserIcon} title="Sign In" />
+    <SidebarRow onClick={session ? signOut : signIn} Icon={UserIcon} title={session ? "Sign Out" : "Sign In"} />
     <SidebarRow Icon={DotsCircleHorizontalIcon} title="More" />
   </div>
   )
