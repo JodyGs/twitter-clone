@@ -44,7 +44,7 @@ function Tweet({ tweet }: Props) {
             </p>
 
             <TimeAgo
-              classname="text-sm text-gray-500"
+              className="text-sm text-gray-500"
               date={tweet._createdAt}
             />
           </div>
