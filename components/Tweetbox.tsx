@@ -26,7 +26,7 @@ function Tweetbox({setTweets}: Props) {
   const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false)
 
   const addImageToTweet = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault()
     if (!imageInputRef.current?.value) return
